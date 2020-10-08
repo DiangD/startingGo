@@ -2,6 +2,10 @@ package tree
 
 import "fmt"
 
+//go语言只有封装没有继承与多态
+//方法或者变量的首字母大写：public，相反为private
+//命名一般为CamelCase
+
 type Node struct {
 	Value       int
 	Left, Right *Node
@@ -27,13 +31,4 @@ func (node *Node) SetValue(value int) {
 //nil指针也可以调用方法！
 func (node *Node) Print() {
 	fmt.Print(node.Value, " ")
-}
-
-func (node *Node) Traverse() {
-	if node == nil {
-		return
-	}
-	node.Left.Traverse()
-	node.Print()
-	node.Right.Traverse()
 }

@@ -5,6 +5,9 @@ import (
 	"tree"
 )
 
+//每一个目录为一个包
+//main包包含可执行入口
+
 func main() {
 	root := tree.Node{
 		Value: 3,
