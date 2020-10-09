@@ -10,6 +10,7 @@ func main() {
 	for i := 0; i < 10; i++ {
 		q.Push(i)
 	}
+	q.Push("test")
 	fmt.Println(q, q.IsEmpty())
 	for i := 0; i < 10; i++ {
 		q.Pop()
