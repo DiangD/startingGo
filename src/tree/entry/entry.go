@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"tree"
+	"shmiloveu.fun/startingGo/src/tree"
 )
 
 //每一个目录为一个包
