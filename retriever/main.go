@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	mock "shmiloveu.fun/startingGo/src/retriever/mockretriever"
-	real2 "shmiloveu.fun/startingGo/src/retriever/real"
+	mock "shmiloveu.fun/startingGo/retriever/mockretriever"
+	real2 "shmiloveu.fun/startingGo/retriever/real"
 	"time"
 )
 
