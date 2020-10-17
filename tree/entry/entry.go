@@ -34,4 +34,9 @@ func main() {
 	pRoot.SetValue(300)
 	pRoot.Print()
 	root.Traverse()
+	var count int
+	root.TraverseFunc(func(node *tree.Node) {
+		count++
+	})
+	fmt.Printf("node count:%d", count)
 }
