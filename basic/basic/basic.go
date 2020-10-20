@@ -80,10 +80,13 @@ func euler() {
 
 func triangle() {
 	var a, b int = 3, 4
-	var c int
+	fmt.Println(calcTriangle(a, b))
+}
+
+func calcTriangle(a, b int) int {
 	//强制类型转换
-	c = int(math.Sqrt(float64(a*a + b*b)))
-	fmt.Println(c)
+	c := int(math.Sqrt(float64(a*a + b*b)))
+	return c
 }
 func main() {
 	fmt.Println("Hello World")
