@@ -2,57 +2,54 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
+//channel的发送接收是阻塞的，一次写入的操作灯带一次读取（阻塞式io）
 func chanDemo() {
-	var channels []chan<- int
+	var workers [10]worker
 	for i := 0; i < 10; i++ {
-		channels = append(channels, createWorker(i))
+		workers[i] = createWorker(i)
+	}
+	for i, w := range workers {
+		w.in <- 'a' + i
 	}
 
-	for i := 0; i < len(channels); i++ {
-		channels[i] <- 'a' + i
+	for i, w := range workers {
+		w.in <- 'A' + i
 	}
 
-	time.Sleep(time.Millisecond)
+	for _, w := range workers {
+		<-w.done
+	}
 }
 
-func worker(id int,ch chan int) {
-	go  func() {
-		for n := range ch {
-			fmt.Printf("channel %d revecived %d\n", id, n)
+func doWorker(id int, w worker) {
+	go func() {
+		for n := range w.in {
+			fmt.Printf("channel %d revecived %c\n", id, n)
+
+			go func() {
+				w.done <- true
+			}()
 		}
-		//for {
-		//	if n,ok := <-ch;ok{
-		//		fmt.Printf("channel %d revecived %d\n", id, n)
-		//	}else {
-		//		break
-		//	}
-		//}
 	}()
 }
 
-func createWorker(id int) chan<- int {
-	ch := make(chan int)
-	go worker(id,ch)
-	return ch
+type worker struct {
+	in   chan int
+	done chan bool
 }
 
-func bufferChannel() {
-	c :=make(chan int,3)
-	go worker(1,c)
-	c <- 1
-	c <- 2
-	c <- 3
-	c <- 4
-	//close后接收方依然可以收到该类型的0值
-	//只能由发送方close
-	close(c)
-	time.Sleep(time.Millisecond)
+func createWorker(id int) worker {
+
+	w := worker{
+		in:   make(chan int),
+		done: make(chan bool),
+	}
+	go doWorker(id, w)
+	return w
 }
 
 func main() {
-	//chanDemo()
-	bufferChannel()
+	chanDemo()
 }
