@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"shmiloveu.fun/startingGo/errorhandle/filelistingserver/web/handle"
 )
