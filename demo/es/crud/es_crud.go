@@ -47,15 +47,15 @@ func init() {
 		FirstName: "Li",
 		LastName:  "si",
 		Age:       26,
-		About:     "humble and hungry",
-		Interests: []string{"basketball", "game", "music"},
+		About:     "I Love C and C++",
+		Interests: []string{"basketball", "cook"},
 	}
 	employee2 := Employee{
 		FirstName: "Zhang",
 		LastName:  "san",
 		Age:       28,
-		About:     "humble and hungry",
-		Interests: []string{"basketball", "game", "music"},
+		About:     "I love Python and Javascript",
+		Interests: []string{"football", "camper"},
 	}
 	employees = append(employees, employee)
 	employees = append(employees, employee1)
