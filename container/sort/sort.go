@@ -66,5 +66,17 @@ func main() {
 		}
 		return p.weight > q.weight
 	})
+
+	//替代方法
+	slc := []base{
+		{10, time.Now()},
+		{11, time.Unix(time.Now().Unix()-10000, 0)},
+		{12, time.Unix(time.Now().Unix()-10000, 0)},
+		{11, time.Unix(time.Now().Unix()-1000, 0)},
+	}
+	sort.Slice(slc, func(i, j int) bool {
+		return slc[i].createAt.After(slc[j].createAt)
+	})
 	fmt.Println(sl)
+	fmt.Println(slc)
 }
