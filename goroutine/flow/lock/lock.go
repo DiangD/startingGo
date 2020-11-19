@@ -40,7 +40,7 @@ func main() {
 			defer wg.Done()
 			if !lock.Lock() {
 				// log error
-				fmt.Println("lock failed")
+				fmt.Println("lock_demo failed")
 				return
 			}
 			counter++
