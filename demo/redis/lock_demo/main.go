@@ -13,11 +13,11 @@ func main() {
 	n := 10
 	count := 0
 	key := "demo:redis:lock"
-	val := uuid.NewV1().String()
 	wg := sync.WaitGroup{}
 	wg.Add(n)
 	for i := 0; i < n; i++ {
 		go func() {
+			val := uuid.NewV1().String()
 			isLock := lock.Lock(key, val, time.Second)
 			defer wg.Done()
 			if !isLock {
