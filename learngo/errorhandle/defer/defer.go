@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"shmiloveu.fun/startingGo/functional/fib"
+	"shmiloveu.fun/startingGo/learngo/functional/fib"
 )
 
 /**

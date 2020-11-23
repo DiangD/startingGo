@@ -5,6 +5,7 @@ import (
 	"runtime"
 	"time"
 )
+
 //Goroutine 轻量级线程
 //非抢占式的多任务处理，由协程主动交出控制权
 //编译器/虚拟机/解释器层面的多任务
@@ -15,7 +16,7 @@ func main() {
 		go func(i int) {
 			for {
 				a[i]++
-				fmt.Printf("Print from goroutine %d\n",i)
+				fmt.Printf("Print from goroutine %d\n", i)
 				runtime.Gosched()
 			}
 		}(i)
@@ -27,4 +28,4 @@ func main() {
 /**
 goroutine可能的切换点
 io/select channel 等待锁 函数调用 runtime.Gosched()
- */
+*/

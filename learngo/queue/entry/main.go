@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"shmiloveu.fun/startingGo/queue"
+	"shmiloveu.fun/startingGo/learngo/queue"
 )
 
 func main() {

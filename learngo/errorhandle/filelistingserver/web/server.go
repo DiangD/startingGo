@@ -5,7 +5,7 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
-	"shmiloveu.fun/startingGo/errorhandle/filelistingserver/web/handle"
+	"shmiloveu.fun/startingGo/learngo/errorhandle/filelistingserver/web/handle"
 )
 
 type appHandler func(writer http.ResponseWriter, request *http.Request) error

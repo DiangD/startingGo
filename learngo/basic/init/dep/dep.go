@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"shmiloveu.fun/startingGo/basic/init/pack"
-	"shmiloveu.fun/startingGo/basic/init/util"
+	"shmiloveu.fun/startingGo/learngo/basic/init/pack"
+	"shmiloveu.fun/startingGo/learngo/basic/init/util"
 )
 
 func main() {

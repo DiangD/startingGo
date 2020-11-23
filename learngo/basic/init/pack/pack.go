@@ -2,7 +2,7 @@ package pack
 
 import (
 	"fmt"
-	"shmiloveu.fun/startingGo/basic/init/util"
+	"shmiloveu.fun/startingGo/learngo/basic/init/util"
 )
 
 var Pack int = 6
