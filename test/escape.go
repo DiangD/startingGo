@@ -40,6 +40,8 @@ func buildUserArr() []user {
 	}
 }
 
+// u在调用过程中会逃逸到堆(在协程引用了别的协程的变量，变量逃逸到heap)，
+//因此u不会随着函数结束而消亡
 func wrong(arr []user) {
 	for _, u := range arr {
 		go func(u *user) {
