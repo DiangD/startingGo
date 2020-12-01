@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"time"
 )
 
 //.\escape_demo.go:34:6: can inline buildUserArr
@@ -54,8 +54,9 @@ func buildUserArr() []user {
 }
 
 // u在调用过程中会逃逸到堆(在协程引用了别的协程的变量，变量逃逸到heap)，
-//因此u不会随着函数结束而消亡
+//因此u不会随着函数结束而消亡->for range 语句的特性
 func wrong(arr []user) {
+	//u 的地址不变
 	for _, u := range arr {
 		go func(u *user) {
 			printUser(u)
@@ -63,18 +64,35 @@ func wrong(arr []user) {
 	}
 }
 
-func main() {
-	arr := buildUserArr()
-	var wg sync.WaitGroup
-	wg.Add(len(arr))
+func right(arr []user) {
 	for _, u := range arr {
 		tmp := u
-		go func(u *user) {
-			printUser(u)
-			wg.Done()
-		}(&tmp)
+		go printUser(&tmp)
+
 	}
-	wg.Wait()
+}
+
+func right1(arr []user) {
+	for i := 0; i < len(arr); i++ {
+		go printUser(&arr[i])
+	}
+}
+
+func main() {
+	arr := buildUserArr()
+	//var wg sync.WaitGroup
+	//wg.Add(len(arr))
+	//for _, u := range arr {
+	//	tmp := u
+	//	go func(u *user) {
+	//		printUser(u)
+	//		wg.Done()
+	//	}(&tmp)
+	//}
+	//wg.Wait()
+	right(arr)
+	right1(arr)
+	time.Sleep(time.Second)
 
 	pointerEscape()
 	stackSizeExceed()
