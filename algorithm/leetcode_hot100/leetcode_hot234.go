@@ -1,5 +1,8 @@
 package main
 
+//回文链表
+
+//思路：o(n) 将链表转化为数组，再对数组做遍历
 func isPalindrome(head *ListNode) bool {
 	arr := make([]int, 0)
 	for head != nil {
