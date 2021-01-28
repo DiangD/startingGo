@@ -34,4 +34,12 @@ func main() {
 	delete(m, "course")
 	_, ok = m["course"]
 	fmt.Println(ok)
+
+	//nil map
+	//试图向nil map中插入值是不行的，但是查找、删除、长度以及使用range循环是可以的。
+	m4 := map[string]int{}
+	m4 = nil
+	fmt.Println(m4)
+	//panic: assignment to entry in nil map
+	//m4["test"] = 10
 }
